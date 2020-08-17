@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 namespace internCSharp
 {
     class Program
@@ -88,6 +89,7 @@ namespace internCSharp
                     Console.WriteLine("3.Create member");
                     Console.WriteLine("4.Update member");
                     Console.WriteLine("5.Delete member");
+                    Console.WriteLine("6.Pagination");
                     Console.WriteLine("Other. Exit");
                     int key = int.Parse(Console.ReadLine());
                     switch (key)
@@ -117,6 +119,20 @@ namespace internCSharp
                             list[index].show();
                             Console.WriteLine("=====Delete=====");
                             deleteMember(index);
+                            break;
+                        case 6:
+                            //var ketqua = from member in list
+                            //             where member.Weight > 100
+                            //             select member;
+                            //showList(ketqua.ToList());
+                            var ketqua = from member in list
+                                         select member;
+                            Console.WriteLine("Select number of members will pisplay ");
+                            int numberObjPerPage = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Select page from 0 to " + (list.Count-1) / numberObjPerPage);
+                            int page = int.Parse(Console.ReadLine());
+                            var kq=ketqua.Skip(numberObjPerPage * page).Take(10);
+                            showList(kq.ToList());
                             break;
                         default:
                             flag = false;
