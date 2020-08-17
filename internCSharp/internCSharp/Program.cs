@@ -15,27 +15,27 @@ namespace internCSharp
         }
         public static void showList(List<Members> l)
         {
-           foreach(var i in l)
+            foreach (var i in l)
             {
                 Console.WriteLine("================================");
-                Console.WriteLine("MemberId:"+ i.MemberId);
-                Console.WriteLine("Email:"+ i.Email.ToString());
-                Console.WriteLine("UserName:"+i.UserName.ToString());
-                Console.WriteLine("FirstName:"+ i.FirstName.ToString());
-                Console.WriteLine("LastName:"+ i.LastName.ToString());
-                Console.WriteLine("Gender:"+ i.Gender.ToString());
-                Console.WriteLine("Weight:"+ i.Weight);
+                Console.WriteLine("MemberId:" + i.MemberId);
+                Console.WriteLine("Email:" + i.Email.ToString());
+                Console.WriteLine("UserName:" + i.UserName.ToString());
+                Console.WriteLine("FirstName:" + i.FirstName.ToString());
+                Console.WriteLine("LastName:" + i.LastName.ToString());
+                Console.WriteLine("Gender:" + i.Gender.ToString());
+                Console.WriteLine("Weight:" + i.Weight);
                 Console.WriteLine("================================");
             }
         }
 
         public static Members createMember()
         {
-            Members m=new Members();
+            Members m = new Members();
             Console.WriteLine("MemberId:");
             m.MemberId = int.Parse(Console.ReadLine());
             Console.WriteLine("Email:");
-            m.Email =Console.ReadLine();
+            m.Email = Console.ReadLine();
             Console.WriteLine("UserName:");
             m.UserName = Console.ReadLine();
             Console.WriteLine("FirstName:");
@@ -129,9 +129,9 @@ namespace internCSharp
                                          select member;
                             Console.WriteLine("Select number of members will pisplay ");
                             int numberObjPerPage = int.Parse(Console.ReadLine());
-                            Console.WriteLine("Select page from 0 to " + (list.Count-1) / numberObjPerPage);
+                            Console.WriteLine("Select page from 0 to " + (list.Count - 1) / numberObjPerPage);
                             int page = int.Parse(Console.ReadLine());
-                            var kq=ketqua.Skip(numberObjPerPage * page).Take(10);
+                            var kq = ketqua.Skip(numberObjPerPage * page).Take(numberObjPerPage);
                             showList(kq.ToList());
                             break;
                         default:
