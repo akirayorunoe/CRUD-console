@@ -8,44 +8,59 @@ namespace DataAccess
 {
     public class Repository : IRepository
     {
-        public List<Members> Members=new List<Members>();
+        private List<Member> Members = null;
 
-         List<Members> IRepository.ReadFromFile()
+        public Repository()
         {
             string json = File.ReadAllText("data.json");
-            Members = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Members>>(json);
-            return Members;
+            Members = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Member>>(json);
         }
-        //List<Members> IRepository.Read()
-        //{
-        //    return Members;
-        //}
 
-            void IRepository.Create(Members member)
+        void IRepository.Create(Member member)
         {
-            member.MemberId=Members[Members.Count-1].MemberId + 1;
+            member.MemberId = Members[Members.Count - 1].MemberId + 1;
             Guid g = Guid.NewGuid();
             member.MemberUUId = g.ToString();
             Members.Add(member);
         }
 
-        List<Members> IRepository.Update(int i, Members member)
+        void IRepository.Update(int i, Member updateMember)
         {
-            Members[i].Email = member.Email;
-            Members[i].UserName = member.UserName;
-            Members[i].FirstName = member.FirstName;
-            Members[i].LastName = member.LastName;
-            Members[i].Gender = member.Gender;
-            Members[i].Weight = member.Weight;
-            return Members;
+            foreach (var member in Members)
+            {
+                if (member.MemberId == i)
+                {
+                    member.Email = updateMember.Email;
+                    member.UserName = updateMember.UserName;
+                    member.FirstName = updateMember.FirstName;
+                    member.LastName = updateMember.LastName;
+                    member.Gender = updateMember.Gender;
+                    member.Weight = updateMember.Weight;
+                }
+            }
         }
 
-        List<Members> IRepository.Delete(int i)
+        void IRepository.Delete(int i)
         {
-            Members.RemoveAt(i);
-            return Members;
+            Members.RemoveAll(member=>member.MemberId==i);
         }
 
+        public List<Member> GetAll(Func<Member, bool> expression)
+        {
+            if (expression != null)
+                return Members.Where(expression).ToList();
+            else return Members;
+        }
 
+        public Member GetMemberByMemberId(int memberId)
+        {
+            var member = Members.FirstOrDefault(mem => mem.MemberId == memberId);
+            return member;
+        }
+
+        public List<Member> GetAll()
+        {
+            return Members;
+        }
     }
 }

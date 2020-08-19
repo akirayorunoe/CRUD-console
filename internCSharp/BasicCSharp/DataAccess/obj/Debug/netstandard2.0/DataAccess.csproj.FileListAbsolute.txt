@@ -1,10 +1,10 @@
+C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\bin\Debug\netstandard2.0\data.json
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\bin\Debug\netstandard2.0\DataAccess.deps.json
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\bin\Debug\netstandard2.0\DataAccess.dll
+C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\bin\Debug\netstandard2.0\DataAccess.pdb
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\obj\Debug\netstandard2.0\DataAccess.csprojAssemblyReference.cache
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfoInputs.cache
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfo.cs
-C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\bin\Debug\netstandard2.0\data.json
-C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\bin\Debug\netstandard2.0\DataAccess.pdb
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CoreCompileInputs.cache
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\obj\Debug\netstandard2.0\DataAccess.dll
 C:\Users\intern.phhoang1\source\repos\internCSharp\BasicCSharp\DataAccess\obj\Debug\netstandard2.0\DataAccess.pdb

@@ -2,7 +2,7 @@
 
 namespace DataAccess
 {
-    public class Members
+    public class Member
     {
         public int MemberId  // property
         { get; set; }

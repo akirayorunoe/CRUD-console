@@ -3,18 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
+
 namespace internCSharp
 {
     class Program
     {
         //IRepository repository=new Repository();
-        static readonly IRepository repository = new Repository();
+        static readonly IRepository MemberRepository = new Repository();
+        static List<Member> members = MemberRepository.GetAll();
         static void Main(string[] args)
         {
-            var members=repository.ReadFromFile();
+            
             try
             {
                 bool flag = true;
+                
                 while (flag)
                 {
                     Console.WriteLine("Enter number");
@@ -25,34 +29,35 @@ namespace internCSharp
                     Console.WriteLine("5.Delete member");
                     Console.WriteLine("6.Pagination");
                     Console.WriteLine("Other. Exit");
-                    int key = int.Parse(Console.ReadLine());
+                    int.TryParse(Console.ReadLine(),out var key);
                     switch (key)
                     {
                         case 1:
-                            showList(members);
+                            showList(MemberRepository.GetAll());
                             break;
                         case 2:
-                            Console.WriteLine("Choose index of member from 0 to " + (members.Count - 1));
-                            int index = int.Parse(Console.ReadLine());
-                            members[index].show();
+                            Console.WriteLine("Choose MemberId to show");
+                            int.TryParse(Console.ReadLine(),out var index);
+                            MemberRepository.GetMemberByMemberId(index)?.show();
+                            //MemberRepository.GetAll(member => member.MemberId == index).FirstOrDefault()?.show();
                             break;
                         case 3:
-                            Members newMember = createMember();
-                            repository.Create(newMember);
+                            Member newMember = createMember();
+                            MemberRepository.Create(newMember);
                             break;
                         case 4:
-                            Console.WriteLine("Choose index of member from 0 to " + (members.Count - 1) + " to update");
-                            index = int.Parse(Console.ReadLine());
-                            members[index].show();
+                            Console.WriteLine("Choose MemberId to update");
+                            index=int.Parse(Console.ReadLine());
+                            MemberRepository.GetMemberByMemberId(index)?.show();
                             Console.WriteLine("-----Update to-----");
-                            repository.Update(index, createMember());
+                            MemberRepository.Update(index, createMember());
                             break;
                         case 5:
-                            Console.WriteLine("Choose index of member from 0 to " + (members.Count - 1) + " to update");
+                            Console.WriteLine("Choose MemberId delete");
                             index = int.Parse(Console.ReadLine());
-                            members[index].show();
+                            MemberRepository.GetMemberByMemberId(index)?.show();
                             Console.WriteLine("=====Delete=====");
-                            repository.Delete(index);
+                            MemberRepository.Delete(index);
                             break;
                         case 6:
                             //var ketqua = from member in list
@@ -80,7 +85,7 @@ namespace internCSharp
                 Console.WriteLine(e);
             }
         }
-        public static void showList(List<Members> members)
+        public static void showList(List<Member> members)
         {
             foreach (var i in members)
             {
@@ -88,15 +93,23 @@ namespace internCSharp
             }
         }
 
-        public static Members createMember()
+        public static Member createMember()
         {
-            Members member = new Members();
-            //Console.WriteLine("MemberId:");
-            //member.MemberId = int.Parse(Console.ReadLine());
-            Console.WriteLine("Email:");
-            member.Email = Console.ReadLine();
-            Console.WriteLine("UserName:");
-            member.UserName = Console.ReadLine();
+            Member member = new Member();
+            //validation
+            do {
+                Console.WriteLine("Email:");
+                member.Email = Console.ReadLine();
+            }
+            while (!Regex.IsMatch(member.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase)
+            || members.Find(mem=>member.Email==mem.Email)!=null);
+            //validation
+            do
+            {
+                Console.WriteLine("UserName:");
+                member.UserName = Console.ReadLine();
+            }
+            while (members.Find(mem => member.UserName == mem.UserName) != null);
             Console.WriteLine("FirstName:");
             member.FirstName = Console.ReadLine();
             Console.WriteLine("LastName:");

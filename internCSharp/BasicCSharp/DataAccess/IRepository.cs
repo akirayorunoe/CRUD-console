@@ -6,10 +6,12 @@ namespace DataAccess
 {
     public interface IRepository
     {
-        List<Members> ReadFromFile();
-        void Create(Members member);
+        List<Member> GetAll();
+        List<Member> GetAll(Func<Member,bool> expression);
+        Member GetMemberByMemberId(int memberId);
+        void Create(Member member);
         //List<Members> Read();
-        List<Members> Update(int index,Members member);
-        List<Members> Delete(int index);
+        void Update(int index,Member member);
+        void Delete(int index);
     }
 }
