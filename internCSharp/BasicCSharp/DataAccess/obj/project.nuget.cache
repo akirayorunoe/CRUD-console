@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "W8DD9+8FjSffnfK/G/gp4RWa+CPTE30X6xLFfgKjPdcAVazfkAfAc7/2IxUBVpqGY7pRBXhjaN0po6euMV7Ezg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\intern.phhoang1\\source\\repos\\internCSharp\\BasicCSharp\\DataAccess\\DataAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

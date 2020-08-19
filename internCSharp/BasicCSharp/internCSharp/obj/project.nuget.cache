@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/GeThnxV6hwUqGJfJ1xR3hyuIeZv0iEIKJd+HNwJmUHFdmfYoRTUmmwUTqY58JVAt+4LvluPZTzf9dkPzdYrHg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\intern.phhoang1\\source\\repos\\internCSharp\\BasicCSharp\\internCSharp\\internCSharp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
