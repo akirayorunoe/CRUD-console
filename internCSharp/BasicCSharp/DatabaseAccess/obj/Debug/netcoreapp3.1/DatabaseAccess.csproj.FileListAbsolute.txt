@@ -1,0 +1,9 @@
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\bin\Debug\netcoreapp3.1\DatabaseAccess.deps.json
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\bin\Debug\netcoreapp3.1\DatabaseAccess.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\obj\Debug\netcoreapp3.1\DatabaseAccess.csprojAssemblyReference.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\obj\Debug\netcoreapp3.1\DatabaseAccess.AssemblyInfoInputs.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\obj\Debug\netcoreapp3.1\DatabaseAccess.AssemblyInfo.cs
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\bin\Debug\netcoreapp3.1\DatabaseAccess.pdb
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\obj\Debug\netcoreapp3.1\DatabaseAccess.csproj.CoreCompileInputs.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\obj\Debug\netcoreapp3.1\DatabaseAccess.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\internCSharp\BasicCSharp\DatabaseAccess\obj\Debug\netcoreapp3.1\DatabaseAccess.pdb

@@ -226,11 +226,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\intern.phhoang1\\source\\repos\\internCSharp\\BasicCSharp\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\intern.phhoang1\\source\\repos\\CRUD-console\\internCSharp\\BasicCSharp\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "C:\\Users\\intern.phhoang1\\source\\repos\\internCSharp\\BasicCSharp\\DataAccess\\DataAccess.csproj",
+      "projectPath": "C:\\Users\\intern.phhoang1\\source\\repos\\CRUD-console\\internCSharp\\BasicCSharp\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\intern.phhoang1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\intern.phhoang1\\source\\repos\\internCSharp\\BasicCSharp\\DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\intern.phhoang1\\source\\repos\\CRUD-console\\internCSharp\\BasicCSharp\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\intern.phhoang1\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using DatabaseAccess;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -116,6 +117,8 @@ namespace internCSharp
             member.LastName = Console.ReadLine();
             Console.WriteLine("Gender:");
             member.Gender = Console.ReadLine();
+            Console.WriteLine("Birth date(MM/DD/YYYY):");
+            member.BirthDate = Console.ReadLine();
             Console.WriteLine("Weight:");
             member.Weight = int.Parse(Console.ReadLine());
             return member;
