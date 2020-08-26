@@ -1,6 +1,7 @@
-﻿using DataAccess;
-using DatabaseAccess;
+﻿using DatabaseAccess;
+using DatabaseAccess.DBContexts;
 using DatabaseAccess.Models;
+using DatabaseAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +13,11 @@ namespace internCSharp
     class Program
     {
         //IRepository repository=new Repository();
-        static readonly IRepository Repository = new Repository();
-        static List<Member> members = Repository.GetAllMember();
+        static MemberProfileContext context = new MemberProfileContext();
+        static readonly IMemberRepository MemberRepository = new MemberRepository(context);
+        static readonly IStudioRepository StudioRepository = new StudioRepository(context);
         static void Main(string[] args)
         {
-            
             try
             {
                 bool flag = true;
@@ -42,82 +43,81 @@ namespace internCSharp
                     switch (key)
                     {
                         case 1:
-                            showList(Repository.GetAllMember());
+                            showList(MemberRepository.GetAll());
                             break;
                         case 2:
                             Console.WriteLine("Choose MemberId to show");
                             int.TryParse(Console.ReadLine(),out var index);
-                            Repository.GetMemberByMemberId(index)?.show();
+                            MemberRepository.GetById(index)?.show();
                             //MemberRepository.GetAll(member => member.MemberId == index).FirstOrDefault()?.show();
                             break;
                         case 3:
                             Member newMember = createMember();
-                            Repository.CreateMember(newMember);
+                            MemberRepository.Create(newMember);
                             break;
                         case 4:
                             Console.WriteLine("Choose MemberId to update");
                             index=int.Parse(Console.ReadLine());
-                            Repository.GetMemberByMemberId(index)?.show();
+                            MemberRepository.GetById(index)?.show();
                             Console.WriteLine("-----Update to-----");
-                            Repository.UpdateMember(index, createMember());
+                            MemberRepository.Update(MemberRepository.GetById(index), createMember());
                             break;
                         case 5:
                             Console.WriteLine("Choose MemberId delete");
                             index = int.Parse(Console.ReadLine());
-                            Repository.GetMemberByMemberId(index)?.show();
+                            MemberRepository.GetById(index)?.show();
                             Console.WriteLine("=====Delete=====");
-                            Repository.DeleteMember(index);
+                            MemberRepository.Delete(index);
                             break;
                         case 6:
                             //var ketqua = from member in list
                             //             where member.Weight > 100
                             //             select member;
                             //showList(ketqua.ToList());
-                            var ketqua = from member in members
-                                         select member;
+                            var ketqua = StudioRepository.GetAll();
                             Console.WriteLine("Select number of members will pisplay ");
                             int numberObjPerPage = int.Parse(Console.ReadLine());
-                            Console.WriteLine("Select page from 0 to " + (members.Count - 1) / numberObjPerPage);
+                            Console.WriteLine("Select page from 0 to " + (ketqua.Count - 1) / numberObjPerPage);
                             int page = int.Parse(Console.ReadLine());
                             var kq = ketqua.Skip(numberObjPerPage * page).Take(numberObjPerPage);
                             showList(kq.ToList());
                             break;
                         case 7:
-                            showList(Repository.GetAllStudio());
+                            showList(StudioRepository.GetAll());
                             break;
                         case 8:
                             Console.WriteLine("Choose Studio to show");
                             int.TryParse(Console.ReadLine(), out index);
-                            Repository.GetStudioByStudioId(index)?.show();
+                            StudioRepository.GetById(index)?.show();
                             //MemberRepository.GetAll(member => member.MemberId == index).FirstOrDefault()?.show();
                             break;
                         case 9:
                             Studio newStudio = createStudio();
-                            Repository.CreateStudio(newStudio);
+                            StudioRepository.Create(newStudio);
                             break;
                         case 10:
                             Console.WriteLine("Choose StudioId to update");
                             index = int.Parse(Console.ReadLine());
-                            Repository.GetStudioByStudioId(index)?.show();
+                            StudioRepository.GetById(index)?.show();
                             Console.WriteLine("-----Update to-----");
-                            Repository.UpdateStudio(index, createStudio());
+                            StudioRepository.Update(index, createStudio());
                             break;
                         case 11:
                             Console.WriteLine("Choose StudioId delete");
                             index = int.Parse(Console.ReadLine());
-                            Repository.GetStudioByStudioId(index)?.show();
+                            StudioRepository.GetById(index)?.show();
                             Console.WriteLine("=====Delete=====");
-                            Repository.DeleteStudio(index);
+                            StudioRepository.Delete(index);
                             break;
                         case 12:
                             Console.WriteLine("Studio Id:");
                             int.TryParse(Console.ReadLine(),out int studioId);
-                            showList(Repository.ShowListMemberOfStudio(studioId));
+                            showList(MemberRepository.ShowListMemberOfStudio(studioId));
                             break;
                         case 13:
-                            var specialStudio = Repository.GetStudio(studio => studio.ManagerEmail == string.Empty);
+                            var specialStudio = StudioRepository.Get(studio => studio.ManagerEmail == string.Empty);
                             //var specialStudio = Repository.GetStudio(studio => studio.ManagerEmail == "knnsn@kbs.abc");
-                            showList(Repository.GetAllMember(member => member.StudioId == specialStudio.StudioId));
+                            showList(MemberRepository.GetAll(member => member.StudioId == specialStudio.StudioId));
                             break;
                         default:
                             flag = false;
@@ -155,14 +155,14 @@ namespace internCSharp
                 member.Email = Console.ReadLine();
             }
             while (!Regex.IsMatch(member.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase)
-            || members.Find(mem=>member.Email==mem.Email)!=null);
+            || MemberRepository.GetAll().Find(mem=>member.Email==mem.Email)!=null);
             //validation
             do
             {
                 Console.WriteLine("UserName:");
                 member.UserName = Console.ReadLine();
             }
-            while (members.Find(mem => member.UserName == mem.UserName) != null);
+            while (MemberRepository.GetAll().Find(mem => member.UserName == mem.UserName) != null);
             Console.WriteLine("FirstName:");
             member.FirstName = Console.ReadLine();
             Console.WriteLine("LastName:");
@@ -174,10 +174,10 @@ namespace internCSharp
             Console.WriteLine("Weight:");
             member.Weight = int.Parse(Console.ReadLine());
             Console.WriteLine("--Choose StudioId--");
-            showList(Repository.GetAllStudio());
+            showList(StudioRepository.GetAll());
             Console.WriteLine("StudioId:");
             member.StudioId = int.Parse(Console.ReadLine());
-            member.StudioName = Repository.GetStudioByStudioId(member.StudioId).StudioName;
+            member.StudioName = StudioRepository.GetById(member.StudioId).StudioName;
             return member;
         }
         public static Studio createStudio()

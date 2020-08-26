@@ -1,8 +1,7 @@
-﻿using DatabaseAccess.Models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataAccess
+namespace DatabaseAccess.Models
 {
     public class Member
     {
