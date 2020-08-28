@@ -1,2 +1,4 @@
-.vs
-bin/
+internCSharp/.vs
+internCSharp/BasicCSharp.vs
+NETCORE/.vs
+NETCORE/NETCORE/bin
