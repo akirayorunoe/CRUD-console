@@ -11,5 +11,6 @@ namespace NETCORE.DatabaseAccess.DBContext
         }
 
         public DbSet<Member> Members { get; set; }
+        public DbSet<Studio> Studios { get; set; }
     }
 }

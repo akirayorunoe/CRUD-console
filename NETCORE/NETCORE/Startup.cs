@@ -22,6 +22,7 @@ namespace NETCORE
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IMemberRepository, MemberRepository>();//https://stackoverflow.com/questions/46930090/unable-to-resolve-service-for-type-while-attempting-to-activate/46930161
+            services.AddScoped<IStudioRepository, StudioRepository>();
             services.AddDbContext<MemberProfileContext>(opt =>
               opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
