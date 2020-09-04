@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NETCORE.DatabaseAccess.Models;
-using NETCORE.DatabaseAccess.Repositories;
+using NETCORE.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +12,12 @@ namespace NETCORE.Controllers
     [ApiController]
     public class StudiosController : ControllerBase
     {
-        private readonly IStudioRepository studioRepo;
-        public StudiosController(IStudioRepository repo){
+        private readonly IStudioService studioRepo;
+        public StudiosController(IStudioService repo)
+        {
             studioRepo=repo;   
         }
+
         // GET: api/<StudiosController>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Studio>>> GetStudios()

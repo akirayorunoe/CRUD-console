@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NETCORE.DatabaseAccess.Models;
-using NETCORE.DatabaseAccess.Repositories;
+using NETCORE.Services;
 
 namespace NETCORE.Controllers
 {
@@ -10,12 +10,11 @@ namespace NETCORE.Controllers
     [ApiController]
     public class MembersController : ControllerBase
     {
-        private readonly IMemberRepository memberRepo;
-        public MembersController(IMemberRepository repository)
+        private readonly IMemberService memberRepo;
+        public MembersController(IMemberService repository)
         {
             memberRepo = repository;
         }
-
         // GET: api/Members
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Member>>> GetMembers()
@@ -36,7 +35,7 @@ namespace NETCORE.Controllers
         }
         // PUT: api/Members/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<Member>> PutMember(int id,Member member)
+        public async Task<ActionResult<Member>> PutMember(int id, Member member)
         {
             return await memberRepo.Update(id,member);
         }

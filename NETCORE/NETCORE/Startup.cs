@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NETCORE.DatabaseAccess.DBContext;
 using Microsoft.EntityFrameworkCore;
-using NETCORE.DatabaseAccess.Repositories;
+using NETCORE.Services;
 
 namespace NETCORE
 {
@@ -21,8 +21,14 @@ namespace NETCORE
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IMemberRepository, MemberRepository>();//https://stackoverflow.com/questions/46930090/unable-to-resolve-service-for-type-while-attempting-to-activate/46930161
-            services.AddScoped<IStudioRepository, StudioRepository>();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+            services.AddScoped<IMemberService,MemberService>();//https://stackoverflow.com/questions/46930090/unable-to-resolve-service-for-type-while-attempting-to-activate/46930161
+            services.AddScoped<IStudioService,StudioService>();
             services.AddDbContext<MemberProfileContext>(opt =>
               opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
@@ -35,7 +41,7 @@ namespace NETCORE
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
 
             app.UseRouting();

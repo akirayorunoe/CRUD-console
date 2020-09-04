@@ -15,7 +15,6 @@ namespace NETCORE.DatabaseAccess.Repositories
         {
             _DBContext = context;
         }
-
         async Task<Member> IMemberRepository.Create(Member member)
         {
             Guid g = Guid.NewGuid();
