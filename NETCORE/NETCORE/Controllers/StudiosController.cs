@@ -12,45 +12,45 @@ namespace NETCORE.Controllers
     [ApiController]
     public class StudiosController : ControllerBase
     {
-        private readonly IStudioService studioRepo;
-        public StudiosController(IStudioService repo)
+        private readonly IStudioService studioService;
+        public StudiosController(IStudioService service)
         {
-            studioRepo=repo;   
+            studioService=service;   
         }
 
         // GET: api/<StudiosController>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Studio>>> GetStudios()
         {
-            return await studioRepo.GetAll();
+            return await studioService.GetAll();
         }
 
         // GET api/<StudiosController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Studio>> Get(int id)
         {
-            return await studioRepo.Get(id);
+            return await studioService.Get(id);
         }
 
         // POST api/<StudiosController>
         [HttpPost]
         public async Task<ActionResult<Studio>>Post(Studio studio)
         {
-            return await studioRepo.Create(studio);
+            return await studioService.Create(studio);
         }
 
         // PUT api/<StudiosController>/5
         [HttpPut("{id}")]
         public async Task<ActionResult<Studio>>Put(int id, Studio studio)
         {
-            return await studioRepo.Update(id,studio);
+            return await studioService.Update(id,studio);
         }
 
         // DELETE api/<StudiosController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Studio>> Delete(int id)
         {
-            return await studioRepo.Delete(id);
+            return await studioService.Delete(id);
         }
     }
 }
