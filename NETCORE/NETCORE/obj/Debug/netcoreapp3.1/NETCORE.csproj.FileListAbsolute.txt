@@ -321,8 +321,6 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\net
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csprojAssemblyReference.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.AssemblyInfoInputs.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.AssemblyInfo.cs
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CoreCompileInputs.cache
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.RazorTargetAssemblyInfo.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CopyComplete
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\staticwebassets\NETCORE.StaticWebAssets.Manifest.cache
@@ -330,3 +328,8 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\net
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.pdb
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.genruntimeconfig.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.config
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Log4Net.AspNetCore.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CoreCompileInputs.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.MvcApplicationPartsAssemblyInfo.cache

@@ -1,6 +1,8 @@
-
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System.IO;
+using System.Reflection;
 
 namespace NETCORE
 {
@@ -13,9 +15,18 @@ namespace NETCORE
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+             .ConfigureWebHostDefaults(webBuilder =>
+             {
+                 webBuilder.UseStartup<Startup>();
+             }).ConfigureLogging(builder =>
+             {
+                 builder.SetMinimumLevel(LogLevel.Trace);
+                 builder.AddLog4Net("log4net.config");
+             });
+
+        //            .ConfigureWebHostDefaults(webBuilder =>
+        //            {
+        //                webBuilder.UseStartup<Startup>();
+        //            });
     }
-}
+    }
