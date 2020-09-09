@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System.IO;
-using System.Reflection;
 
 namespace NETCORE
 {
@@ -29,4 +27,4 @@ namespace NETCORE
         //                webBuilder.UseStartup<Startup>();
         //            });
     }
-    }
+}

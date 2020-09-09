@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using NETCORE.DatabaseAccess.Models;
-using NETCORE.Services;
-using Microsoft.Extensions.Logging;
-using System.Text.Json;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
+using NETCORE.DatabaseAccess.Models;
 using NETCORE.DatabaseAccess.Repositories;
+using NETCORE.Services;
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace NETCORE.Controllers
 {
@@ -33,16 +33,16 @@ namespace NETCORE.Controllers
                 List<Member> data;
                 if (cacheMember.CacheGetAll("listMembers") == null)
                 {
-                     data = await memberService.GetAll();
+                    data = await memberService.GetAll();
                     cacheMember.CacheSet("listMembers", data);
                 }
-                else { data= cacheMember.CacheGetAll("listMembers");}
+                else { data = cacheMember.CacheGetAll("listMembers"); }
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(data));
                 return data;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.LogInformation("Error {res}", e);
                 return null;
@@ -62,7 +62,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
                 return data;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.LogInformation("Error {res}", e);
                 return null;
@@ -80,7 +80,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
                 return data;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.LogInformation("Error {res}", e);
                 return null;
@@ -100,7 +100,8 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
                 return data;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 _logger.LogInformation("Error {res}", e);
                 return null;
@@ -119,7 +120,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
                 return data;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.LogInformation("Error {res}", e);
                 return null;

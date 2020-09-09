@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using NETCORE.DatabaseAccess.DBContext;
 using NETCORE.DatabaseAccess.Models;
 using System;
@@ -40,7 +39,6 @@ namespace NETCORE.DatabaseAccess.Repositories
             _DBContext.Members.Update(member);
             await _DBContext.SaveChangesAsync();
             return member;
-
         }
 
         async Task<Member> IMemberRepository.Delete(int id)
@@ -50,6 +48,7 @@ namespace NETCORE.DatabaseAccess.Repositories
             {
                 return member;
             }
+
             _DBContext.Remove(member);
             await _DBContext.SaveChangesAsync();
             return member;

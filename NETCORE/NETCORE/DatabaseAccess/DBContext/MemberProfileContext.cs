@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NETCORE.DatabaseAccess.Models;
-using System.Configuration;
 
 namespace NETCORE.DatabaseAccess.DBContext
 {

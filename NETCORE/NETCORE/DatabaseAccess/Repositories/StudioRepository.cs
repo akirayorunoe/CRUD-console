@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NETCORE.DatabaseAccess.DBContext;
 using NETCORE.DatabaseAccess.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NETCORE.DatabaseAccess.Repositories

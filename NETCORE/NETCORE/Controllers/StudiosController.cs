@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NETCORE.DatabaseAccess.Models;
 using NETCORE.Services;
-using log4net.Core;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using System;

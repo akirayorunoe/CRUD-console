@@ -1,6 +1,4 @@
-﻿
-
-using NETCORE.DatabaseAccess.Repositories;
+﻿using NETCORE.DatabaseAccess.Repositories;
 
 namespace NETCORE.Services
 {
