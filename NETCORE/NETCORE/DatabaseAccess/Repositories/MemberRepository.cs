@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using NETCORE.DatabaseAccess.DBContext;
 using NETCORE.DatabaseAccess.Models;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NETCORE.DatabaseAccess.Repositories
 {
-    public class MemberRepository:IMemberRepository
+    public class MemberRepository: IMemberRepository
     {
         private MemberProfileContext _DBContext;
         public MemberRepository(MemberProfileContext context)
@@ -56,15 +57,22 @@ namespace NETCORE.DatabaseAccess.Repositories
 
         async Task<List<Member>> IMemberRepository.GetAll(Func<Member, bool> expression)
         {
-            if (expression != null)
-                 return _DBContext.Members.Where(expression).ToList();
-            else return await _DBContext.Members.ToListAsync();
+                if (expression != null)
+                    return _DBContext.Members.Where(expression).ToList();
+                else return await _DBContext.Members.ToListAsync();
+           
         }
 
 
         async Task<List<Member>> IMemberRepository.GetAll()
         {
-            return await _DBContext.Members.ToListAsync();
+            //if (_cache.CacheGetAll("memberList") == null)
+            // {
+                var list= await _DBContext.Members.ToListAsync();
+                //_cache.CacheSet("memberList", list);
+                  return list;
+          //  }
+            //return _cache.CacheGetAll("memberList");
         }
 
         async Task<List<Member>> IMemberRepository.ShowListMemberOfStudio(int studioId)

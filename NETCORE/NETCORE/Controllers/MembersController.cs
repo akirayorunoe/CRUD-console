@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NETCORE.DatabaseAccess.Models;
 using NETCORE.Services;
-using log4net.Core;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using System;
+using Microsoft.Extensions.Caching.Memory;
+using NETCORE.DatabaseAccess.Repositories;
 
 namespace NETCORE.Controllers
 {
@@ -16,10 +17,12 @@ namespace NETCORE.Controllers
     {
         private readonly IMemberService memberService;
         private readonly Microsoft.Extensions.Logging.ILogger _logger;
-        public MembersController(IMemberService service, ILogger<MembersController> logger)
+        private CacheMemberHelper cacheMember;
+        public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache)
         {
             memberService = service;
             _logger = logger;
+            cacheMember = new CacheMemberHelper(memoryCache);
         }
         // GET: api/Members
         [HttpGet]
@@ -27,7 +30,13 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var data = await memberService.GetAll();
+                List<Member> data;
+                if (cacheMember.CacheGetAll("listMembers") == null)
+                {
+                     data = await memberService.GetAll();
+                    cacheMember.CacheSet("listMembers", data);
+                }
+                else { data= cacheMember.CacheGetAll("listMembers");}
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(data));
