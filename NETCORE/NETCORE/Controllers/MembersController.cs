@@ -16,16 +16,16 @@ namespace NETCORE.Controllers
     [ApiController]
     public class MembersController : ControllerBase
     {
-        private readonly IMapper _mapper;
         private readonly IMemberService memberService;
         private readonly Microsoft.Extensions.Logging.ILogger _logger;
         private CacheMemberHelper cacheMember;
+        private IMapperService mapperService;
         public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache, IMapper mapper)
         {
             memberService = service;
             _logger = logger;
             cacheMember = new CacheMemberHelper(memoryCache);
-            _mapper = mapper;
+            mapperService = new MapperService(mapper);
         }
         // GET: api/Members
         [HttpGet]
@@ -43,7 +43,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(members));
-                var membersDto = _mapper.Map<List<MemberDTO>>(members);
+                var membersDto = mapperService.GetListMemberDTOs(members);
                 return membersDto;
             }
             catch (Exception e)
@@ -59,12 +59,12 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var members = await memberService.Get(id);
+                var member = await memberService.Get(id);
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
-                var membersDto = _mapper.Map<MemberDTO>(members);
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(member));
+                var membersDto = mapperService.GetMemberDTOs(member);
                 return membersDto;
             }
             catch (Exception e)
@@ -78,12 +78,12 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var members = await memberService.Create(member);
+                var memberRes = await memberService.Create(member);
                 _logger.LogInformation("POST: {req}", Request.Path);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
-                var membersDto = _mapper.Map<MemberDTO>(members);
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
+                var membersDto = mapperService.GetMemberDTOs(memberRes);
                 return membersDto;
             }
             catch (Exception e)
@@ -98,13 +98,13 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var members = await memberService.Update(id, member);
+                var memberRes = await memberService.Update(id, member);
                 _logger.LogInformation("PUT: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
-                var membersDto = _mapper.Map<MemberDTO>(members);
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
+                var membersDto = mapperService.GetMemberDTOs(memberRes);
                 return membersDto;
             }
             catch (Exception e)
@@ -119,12 +119,12 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var members = await memberService.Delete(id);
+                var memberRes = await memberService.Delete(id);
                 _logger.LogInformation("DELETE: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
-                var membersDto = _mapper.Map<MemberDTO>(members);
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
+                var membersDto = mapperService.GetMemberDTOs(memberRes);
                 return membersDto;
             }
             catch (Exception e)
