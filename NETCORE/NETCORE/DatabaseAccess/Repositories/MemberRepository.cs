@@ -19,6 +19,8 @@ namespace NETCORE.DatabaseAccess.Repositories
         {
             Guid g = Guid.NewGuid();
             member.MemberUUId = g.ToString();
+            member.CreateDate = DateTime.Now;
+            member.UpdateDate = DateTime.Now;
             _DBContext.Members.Add(member);
             await _DBContext.SaveChangesAsync();
             return member;
@@ -36,6 +38,7 @@ namespace NETCORE.DatabaseAccess.Repositories
             member.Weight = updateMember.Weight;
             member.StudioId = updateMember.StudioId;
             member.StudioName = updateMember.StudioName;
+            member.UpdateDate = DateTime.Now;
             _DBContext.Members.Update(member);
             await _DBContext.SaveChangesAsync();
             return member;
@@ -48,8 +51,8 @@ namespace NETCORE.DatabaseAccess.Repositories
             {
                 return member;
             }
-
-            _DBContext.Remove(member);
+            member.IsDelete = true;
+           // _DBContext.Remove(member);
             await _DBContext.SaveChangesAsync();
             return member;
         }
@@ -67,7 +70,7 @@ namespace NETCORE.DatabaseAccess.Repositories
         {
             //if (_cache.CacheGetAll("memberList") == null)
             // {
-                var list= await _DBContext.Members.ToListAsync();
+                var list= await _DBContext.Members.Where(x=>x.IsDelete==false).ToListAsync();
                 //_cache.CacheSet("memberList", list);
                   return list;
           //  }

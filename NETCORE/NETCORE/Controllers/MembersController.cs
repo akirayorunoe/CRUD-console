@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NETCORE.DatabaseAccess.Models;
@@ -15,32 +16,35 @@ namespace NETCORE.Controllers
     [ApiController]
     public class MembersController : ControllerBase
     {
+        private readonly IMapper _mapper;
         private readonly IMemberService memberService;
         private readonly Microsoft.Extensions.Logging.ILogger _logger;
         private CacheMemberHelper cacheMember;
-        public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache)
+        public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache, IMapper mapper)
         {
             memberService = service;
             _logger = logger;
             cacheMember = new CacheMemberHelper(memoryCache);
+            _mapper = mapper;
         }
         // GET: api/Members
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Member>>> GetMembers()
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetMembers()
         {
             try
             {
-                List<Member> data;
+                List<Member> members=new List<Member>();
                 if (cacheMember.CacheGetAll("listMembers") == null)
                 {
-                    data = await memberService.GetAll();
-                    cacheMember.CacheSet("listMembers", data);
+                    members = await memberService.GetAll();
+                    cacheMember.CacheSet("listMembers", members);
                 }
-                else { data = cacheMember.CacheGetAll("listMembers"); }
+                else { members = cacheMember.CacheGetAll("listMembers"); }
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(data));
-                return data;
+                _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(members));
+                var membersDto = _mapper.Map<List<MemberDTO>>(members);
+                return membersDto;
             }
             catch (Exception e)
             {
@@ -51,16 +55,17 @@ namespace NETCORE.Controllers
 
         // GET: api/Members/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Member>> GetMember(int id)
+        public async Task<ActionResult<MemberDTO>> GetMember(int id)
         {
             try
             {
-                var data = await memberService.Get(id);
+                var members = await memberService.Get(id);
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
-                return data;
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
+                var membersDto = _mapper.Map<MemberDTO>(members);
+                return membersDto;
             }
             catch (Exception e)
             {
@@ -69,16 +74,17 @@ namespace NETCORE.Controllers
             }
         }
         // POST: api/Members
-        public async Task<ActionResult<Member>> PostMember(Member member)
+        public async Task<ActionResult<MemberDTO>> PostMember(Member member)
         {
             try
             {
-                var data = await memberService.Create(member);
+                var members = await memberService.Create(member);
                 _logger.LogInformation("POST: {req}", Request.Path);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
-                return data;
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
+                var membersDto = _mapper.Map<MemberDTO>(members);
+                return membersDto;
             }
             catch (Exception e)
             {
@@ -88,18 +94,18 @@ namespace NETCORE.Controllers
         }
         // PUT: api/Members/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<Member>> PutMember(int id, Member member)
+        public async Task<ActionResult<MemberDTO>> PutMember(int id, Member member)
         {
             try
             {
-                var data = await memberService.Update(id, member);
-
+                var members = await memberService.Update(id, member);
                 _logger.LogInformation("PUT: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
-                return data;
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
+                var membersDto = _mapper.Map<MemberDTO>(members);
+                return membersDto;
             }
             catch (Exception e)
             {
@@ -109,16 +115,17 @@ namespace NETCORE.Controllers
         }
         // DELETE: api/Members/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Member>> DeleteMember(int id)
+        public async Task<ActionResult<MemberDTO>> DeleteMember(int id)
         {
             try
             {
-                var data = await memberService.Delete(id);
+                var members = await memberService.Delete(id);
                 _logger.LogInformation("DELETE: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(data));
-                return data;
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(members));
+                var membersDto = _mapper.Map<MemberDTO>(members);
+                return membersDto;
             }
             catch (Exception e)
             {

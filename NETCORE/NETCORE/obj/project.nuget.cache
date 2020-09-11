@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "RfZn8dLHMjERIGtCHIhVGr+nnyBxAjl9prMBpSyW7Dr5mdx57DM4yBVKonEIxFKbdeqIaHfmlhcD+VEBmMBoag==",
+  "dgSpecHash": "H+621Sk5MdR01QcxVluUDQEqp0sYuekPTw9+01nOZji8q08XHCqi9+DrK3e5D+OeKsk27FPI6dc3c2jtOa2sog==",
   "success": true,
   "projectFilePath": "C:\\Users\\intern.phhoang1\\source\\repos\\CRUD-console\\NETCORE\\NETCORE\\NETCORE.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
@@ -147,7 +149,7 @@
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\intern.phhoang1\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

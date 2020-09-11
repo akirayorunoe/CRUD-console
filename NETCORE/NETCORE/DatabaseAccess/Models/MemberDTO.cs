@@ -1,11 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NETCORE.DatabaseAccess.Models
 {
-    public class Member
+    public class MemberDTO
     {
-        [Key]
         public int MemberId  // property
         { get; set; }
         public string MemberUUId  // property
@@ -26,8 +27,6 @@ namespace NETCORE.DatabaseAccess.Models
         { get; set; }
         public int StudioId { get; set; }
         public string StudioName { get; set; }
-        public bool IsDelete { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; } 
+        public bool Intro { get; set; }
     }
 }

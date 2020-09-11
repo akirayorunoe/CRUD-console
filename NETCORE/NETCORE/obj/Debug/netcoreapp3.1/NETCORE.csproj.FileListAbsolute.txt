@@ -330,6 +330,8 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\net
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.config
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Log4Net.AspNetCore.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csprojAssemblyReference.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CoreCompileInputs.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csprojAssemblyReference.cache
