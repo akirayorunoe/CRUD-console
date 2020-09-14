@@ -19,13 +19,11 @@ namespace NETCORE.Controllers
         private readonly IMemberService memberService;
         private readonly Microsoft.Extensions.Logging.ILogger _logger;
         private CacheMemberHelper cacheMember;
-        private IMapperService mapperService;
-        public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache, IMapper mapper)
+        public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache)
         {
             memberService = service;
             _logger = logger;
             cacheMember = new CacheMemberHelper(memoryCache);
-            mapperService = new MapperService(mapper);
         }
         // GET: api/Members
         [HttpGet]
@@ -43,7 +41,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(members));
-                var membersDto = mapperService.GetListMemberDTOs(members);
+                var membersDto = memberService.GetListMemberDTOs(members);
                 return membersDto;
             }
             catch (Exception e)
@@ -64,7 +62,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(member));
-                var membersDto = mapperService.GetMemberDTOs(member);
+                var membersDto = memberService.GetMemberDTOs(member);
                 return membersDto;
             }
             catch (Exception e)
@@ -83,7 +81,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-                var membersDto = mapperService.GetMemberDTOs(memberRes);
+                var membersDto = memberService.GetMemberDTOs(memberRes);
                 return membersDto;
             }
             catch (Exception e)
@@ -104,7 +102,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-                var membersDto = mapperService.GetMemberDTOs(memberRes);
+                var membersDto = memberService.GetMemberDTOs(memberRes);
                 return membersDto;
             }
             catch (Exception e)
@@ -124,7 +122,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-                var membersDto = mapperService.GetMemberDTOs(memberRes);
+                var membersDto = memberService.GetMemberDTOs(memberRes);
                 return membersDto;
             }
             catch (Exception e)

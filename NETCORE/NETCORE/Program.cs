@@ -21,10 +21,5 @@ namespace NETCORE
                  builder.SetMinimumLevel(LogLevel.Trace);
                  builder.AddLog4Net("log4net.config");
              });
-
-        //            .ConfigureWebHostDefaults(webBuilder =>
-        //            {
-        //                webBuilder.UseStartup<Startup>();
-        //            });
     }
 }
