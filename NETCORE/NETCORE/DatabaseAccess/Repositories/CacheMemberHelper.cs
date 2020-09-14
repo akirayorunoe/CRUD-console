@@ -13,13 +13,13 @@ namespace NETCORE.DatabaseAccess.Repositories
             _cache = memoryCache;
         }
 
-        public List<Member> CacheGetAll(string key)
+        public List<MemberDTO> CacheGetAll(string key)
         {
-            var cacheEntry = _cache.Get<List<Member>>(key);
+            var cacheEntry = _cache.Get<List<MemberDTO>>(key);
             return cacheEntry;
         }
 
-        public void CacheSet(string key, List<Member> value)
+        public void CacheSet(string key, List<MemberDTO> value)
         {
             // Set cache options.
             var cacheEntryOptions = new MemoryCacheEntryOptions()

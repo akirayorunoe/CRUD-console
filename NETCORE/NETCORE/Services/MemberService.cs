@@ -6,11 +6,14 @@ using System.Collections.Generic;
 
 namespace NETCORE.Services
 {
-    public class MemberService : MemberRepository, IMemberService
+    public class MemberService : IMemberService
     {
         private readonly IMapper _mapper;
-        public MemberService(MemberProfileContext ctx,IMapper mapper):base(ctx)//https://stackoverflow.com/questions/57203893/how-to-fix-there-is-no-argument-given-that-corresponds-to-the-required-formal-p
+        private readonly IMemberRepository memberRepository;
+
+        public MemberService(MemberProfileContext ctx,IMapper mapper)//https://stackoverflow.com/questions/57203893/how-to-fix-there-is-no-argument-given-that-corresponds-to-the-required-formal-p
         {
+            memberRepository = new MemberRepository(ctx);
             _mapper = mapper;
         }
 
@@ -22,6 +25,31 @@ namespace NETCORE.Services
         public MemberDTO GetMemberDTOs(Member member)
         {
             return _mapper.Map<MemberDTO>(member);
+        }
+        public List<MemberDTO> GetAll()
+        {
+            var members=memberRepository.GetAll();
+            return GetListMemberDTOs(members.Result);
+        }
+        public MemberDTO Get(int id)
+        {
+            var member = memberRepository.Get(id);
+            return GetMemberDTOs(member.Result);
+        }
+        public MemberDTO Create(Member member)
+        {
+            var memberdto = memberRepository.Create(member);
+            return GetMemberDTOs(memberdto.Result);
+        }
+        public MemberDTO Update(int id,Member member)
+        {
+            var memberdto = memberRepository.Update(id,member);
+            return GetMemberDTOs(memberdto.Result);
+        }
+        public MemberDTO Delete(int id)
+        {
+            var member = memberRepository.Delete(id);
+            return GetMemberDTOs(member.Result);
         }
     }
 }

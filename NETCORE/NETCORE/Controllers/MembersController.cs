@@ -31,18 +31,18 @@ namespace NETCORE.Controllers
         {
             try
             {
-                List<Member> members=new List<Member>();
+                List<MemberDTO> members=new List<MemberDTO>();
                 if (cacheMember.CacheGetAll("listMembers") == null)
                 {
-                    members = await memberService.GetAll();
+                    members = memberService.GetAll();
                     cacheMember.CacheSet("listMembers", members);
                 }
                 else { members = cacheMember.CacheGetAll("listMembers"); }
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(members));
-                var membersDto = memberService.GetListMemberDTOs(members);
-                return membersDto;
+               
+                return members;
             }
             catch (Exception e)
             {
@@ -57,13 +57,12 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var member = await memberService.Get(id);
+                var member =  memberService.Get(id);
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(member));
-                var membersDto = memberService.GetMemberDTOs(member);
-                return membersDto;
+                return member;
             }
             catch (Exception e)
             {
@@ -76,13 +75,13 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var memberRes = await memberService.Create(member);
+                var memberRes = memberService.Create(member);
                 _logger.LogInformation("POST: {req}", Request.Path);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-                var membersDto = memberService.GetMemberDTOs(memberRes);
-                return membersDto;
+                
+                return memberRes;
             }
             catch (Exception e)
             {
@@ -96,14 +95,14 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var memberRes = await memberService.Update(id, member);
+                var memberRes = memberService.Update(id, member);
                 _logger.LogInformation("PUT: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-                var membersDto = memberService.GetMemberDTOs(memberRes);
-                return membersDto;
+               
+                return memberRes;
             }
             catch (Exception e)
             {
@@ -117,13 +116,13 @@ namespace NETCORE.Controllers
         {
             try
             {
-                var memberRes = await memberService.Delete(id);
+                var memberRes =  memberService.Delete(id);
                 _logger.LogInformation("DELETE: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-                var membersDto = memberService.GetMemberDTOs(memberRes);
-                return membersDto;
+               
+                return memberRes;
             }
             catch (Exception e)
             {
