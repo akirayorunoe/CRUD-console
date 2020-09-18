@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using NETCORE.DatabaseAccess.DBContext;
 using NETCORE.DatabaseAccess.Models;
 using NETCORE.DatabaseAccess.Repositories;
 using System.Collections.Generic;
@@ -11,15 +10,15 @@ namespace NETCORE.Services
         private readonly IMapper _mapper;
         private readonly IMemberRepository memberRepository;
 
-        public MemberService(MemberProfileContext ctx,IMapper mapper)//https://stackoverflow.com/questions/57203893/how-to-fix-there-is-no-argument-given-that-corresponds-to-the-required-formal-p
+        public MemberService(IMemberRepository memRepository, IMapper mapper)//https://stackoverflow.com/questions/57203893/how-to-fix-there-is-no-argument-given-that-corresponds-to-the-required-formal-p
         {
-            memberRepository = new MemberRepository(ctx);
+            memberRepository = memRepository;
             _mapper = mapper;
         }
 
         public List<MemberDTO> GetListMemberDTOs(List<Member> members)
         {
-            return _mapper.Map<List<MemberDTO>>(members); 
+            return _mapper.Map<List<MemberDTO>>(members);
         }
 
         public MemberDTO GetMemberDTOs(Member member)
@@ -28,7 +27,7 @@ namespace NETCORE.Services
         }
         public List<MemberDTO> GetAll()
         {
-            var members=memberRepository.GetAll();
+            var members = memberRepository.GetAll();
             return GetListMemberDTOs(members.Result);
         }
         public MemberDTO Get(int id)
@@ -41,9 +40,9 @@ namespace NETCORE.Services
             var memberdto = memberRepository.Create(member);
             return GetMemberDTOs(memberdto.Result);
         }
-        public MemberDTO Update(int id,Member member)
+        public MemberDTO Update(int id, Member member)
         {
-            var memberdto = memberRepository.Update(id,member);
+            var memberdto = memberRepository.Update(id, member);
             return GetMemberDTOs(memberdto.Result);
         }
         public MemberDTO Delete(int id)

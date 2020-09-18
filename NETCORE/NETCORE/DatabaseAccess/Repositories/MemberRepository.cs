@@ -57,13 +57,13 @@ namespace NETCORE.DatabaseAccess.Repositories
             return member;
         }
 
-        async Task<List<Member>> IMemberRepository.GetAll(Func<Member, bool> expression)
-        {
-                if (expression != null)
-                    return _DBContext.Members.Where(expression).ToList();
-                else return await _DBContext.Members.ToListAsync();
+        //async Task<List<Member>> IMemberRepository.GetAll(Func<Member, bool> expression)
+        //{
+        //        if (expression != null)
+        //            return _DBContext.Members.Where(expression).ToList();
+        //        else return await _DBContext.Members.ToListAsync();
            
-        }
+        //}
 
 
         async Task<List<Member>> IMemberRepository.GetAll()
@@ -85,7 +85,7 @@ namespace NETCORE.DatabaseAccess.Repositories
 
         async Task<Member> IMemberRepository.Get(int memberId)
         {
-            return await _DBContext.Members.FirstOrDefaultAsync(mem => mem.MemberId == memberId);
+            return await _DBContext.Members.FirstOrDefaultAsync(mem => mem.MemberId == memberId)??new Member();
         }
     }
 }

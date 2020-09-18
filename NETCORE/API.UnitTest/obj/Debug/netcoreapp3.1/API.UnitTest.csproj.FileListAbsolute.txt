@@ -1,7 +1,6 @@
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.csprojAssemblyReference.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.AssemblyInfoInputs.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.AssemblyInfo.cs
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.csproj.CoreCompileInputs.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\bin\Debug\netcoreapp3.1\log4net.config
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\bin\Debug\netcoreapp3.1\appsettings.json
@@ -247,3 +246,6 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debu
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.pdb
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.genruntimeconfig.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\API.UnitTest\obj\Debug\netcoreapp3.1\API.UnitTest.csproj.CoreCompileInputs.cache

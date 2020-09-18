@@ -7,6 +7,7 @@ using NETCORE.DatabaseAccess.DBContext;
 using Microsoft.EntityFrameworkCore;
 using NETCORE.Services;
 using AutoMapper;
+using NETCORE.DatabaseAccess.Repositories;
 
 namespace NETCORE
 {
@@ -28,6 +29,8 @@ namespace NETCORE
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
+            services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<IStudioRepository, StudioRepository>();
             services.AddScoped<IMemberService,MemberService>();//https://stackoverflow.com/questions/46930090/unable-to-resolve-service-for-type-while-attempting-to-activate/46930161
             services.AddScoped<IStudioService,StudioService>();
             services.AddDbContext<MemberProfileContext>(opt =>

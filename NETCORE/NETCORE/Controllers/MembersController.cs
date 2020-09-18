@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using NETCORE.DatabaseAccess.Models;
@@ -79,8 +78,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("POST: {req}", Request.Path);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-                
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));               
                 return memberRes;
             }
             catch (Exception e)
@@ -100,8 +98,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-               
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));    
                 return memberRes;
             }
             catch (Exception e)

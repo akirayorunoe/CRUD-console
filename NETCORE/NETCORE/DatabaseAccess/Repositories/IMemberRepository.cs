@@ -8,7 +8,7 @@ namespace NETCORE.DatabaseAccess.Repositories
     public interface IMemberRepository
     {
         Task<List<Member>> GetAll();
-        Task<List<Member>> GetAll(Func<Member, bool> expression);
+        //Task<List<Member>> GetAll(Func<Member, bool> expression);
         Task<Member> Get(int memberId);
         Task<Member> Create(Member member);
         //List<Members> Read();

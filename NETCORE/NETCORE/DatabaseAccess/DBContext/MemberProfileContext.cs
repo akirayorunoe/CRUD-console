@@ -9,7 +9,7 @@ namespace NETCORE.DatabaseAccess.DBContext
             : base(options)
         {
         }
-        public DbSet<Member> Members { get; set; }
-        public DbSet<Studio> Studios { get; set; }
+        public virtual DbSet<Member> Members { get; set; }
+        public virtual DbSet<Studio> Studios { get; set; }
     }
 }
