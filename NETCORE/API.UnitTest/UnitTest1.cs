@@ -1,15 +1,12 @@
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using NETCORE;
-using NETCORE.DatabaseAccess.DBContext;
 using NETCORE.DatabaseAccess.Models;
 using NETCORE.DatabaseAccess.Repositories;
 using NETCORE.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using Xunit;
 
 namespace API.UnitTest
@@ -33,8 +30,7 @@ namespace API.UnitTest
             // Return all the products
             memberRepoMock.Setup(rp => rp.GetAll()).ReturnsAsync(members);
             memberRepoMock.Setup(rp => rp.Get(It.IsAny<int>())).ReturnsAsync((int i) => members.FirstOrDefault(
-                x => x.MemberId == i)??new Member());
-            //create
+                x => x.MemberId == i) ?? new Member());
             //create
             memberRepoMock.Setup(rp => rp.Create(It.IsAny<Member>())).ReturnsAsync((Member target) =>
             {
@@ -113,12 +109,12 @@ namespace API.UnitTest
 
         [Theory]
         [InlineData(typeof(MemberDTO), 999)]
-        [InlineData(typeof(MemberDTO),1)]
+        [InlineData(typeof(MemberDTO), 1)]
         [InlineData(typeof(MemberDTO), 2)]
-        public void GetMemberTest(object expect,int id)
+        public void GetMemberTest(object expect, int id)
         {
             var b = service.Get(id);
-            Assert.Equal(expect,service.Get(id).GetType());
+            Assert.Equal(expect, service.Get(id).GetType());
         }
         [Fact]
         public void CreateMemberTest()
@@ -164,32 +160,6 @@ namespace API.UnitTest
             };
             Assert.IsType<MemberDTO>(service.Update(1, member));
         }
-
-        //private readonly List<MemberDTO> members;
-        //private readonly MemberDTO member;
-        //private readonly IMemberService _memberService;
-        //public UnitTest1()
-        //{
-        //    var options = new DbContextOptionsBuilder<MemberProfileContext>()
-        //   .UseMySQL("server=localhost;user=root;password=admin;database=member_profile")
-        //   .Options;
-        //    var config = new MapperConfiguration(cfg =>
-        //    {
-        //        cfg.AddProfile(new AutoMapping());
-        //    });
-        //    var mapper = config.CreateMapper();
-        //    Mock<IMemberRepository> repositoryMock = new Mock<IMemberRepository>();
-        //    Mock<IMapper> mapperMock = new Mock<IMapper>();
-        //    Mock<MemberService>serviceMock = new Mock<MemberService>(repositoryMock.Object, mapperMock.Object);
-        //    serviceMock.Setup(rp => rp.GetAll()).Returns(members);
-        //    _memberService = serviceMock.Object;
-        //}
-        //[Fact]
-        //public void GetAllMembersTest()
-        //{
-        //    //_memberRepoMock.Setup(rp => rp.GetAll().Result).Returns(GetTestMembers());
-        //    Assert.Equal(7, _memberService.GetAll().Count);
-
-        //}
+        
     }
 }

@@ -26,11 +26,11 @@ namespace NETCORE.Controllers
         }
         // GET: api/Members
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetMembers()
+        public ActionResult<IEnumerable<MemberDTO>> GetMembers()
         {
             try
             {
-                List<MemberDTO> members=new List<MemberDTO>();
+                List<MemberDTO> members = new List<MemberDTO>();
                 if (cacheMember.CacheGetAll("listMembers") == null)
                 {
                     members = memberService.GetAll();
@@ -40,7 +40,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(members));
-               
+
                 return members;
             }
             catch (Exception e)
@@ -52,11 +52,11 @@ namespace NETCORE.Controllers
 
         // GET: api/Members/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<MemberDTO>> GetMember(int id)
+        public ActionResult<MemberDTO> GetMember(int id)
         {
             try
             {
-                var member =  memberService.Get(id);
+                var member = memberService.Get(id);
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
@@ -70,7 +70,7 @@ namespace NETCORE.Controllers
             }
         }
         // POST: api/Members
-        public async Task<ActionResult<MemberDTO>> PostMember(Member member)
+        public ActionResult<MemberDTO> PostMember(Member member)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("POST: {req}", Request.Path);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));               
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
                 return memberRes;
             }
             catch (Exception e)
@@ -89,7 +89,7 @@ namespace NETCORE.Controllers
         }
         // PUT: api/Members/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<MemberDTO>> PutMember(int id, Member member)
+        public ActionResult<MemberDTO> PutMember(int id, Member member)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
-                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));    
+                _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
                 return memberRes;
             }
             catch (Exception e)
@@ -109,16 +109,16 @@ namespace NETCORE.Controllers
         }
         // DELETE: api/Members/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<MemberDTO>> DeleteMember(int id)
+        public ActionResult<MemberDTO> DeleteMember(int id)
         {
             try
             {
-                var memberRes =  memberService.Delete(id);
+                var memberRes = memberService.Delete(id);
                 _logger.LogInformation("DELETE: {req}", Request.Path);
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-               
+
                 return memberRes;
             }
             catch (Exception e)
