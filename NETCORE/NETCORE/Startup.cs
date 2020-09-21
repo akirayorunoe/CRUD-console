@@ -1,13 +1,13 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NETCORE.DatabaseAccess.DBContext;
-using Microsoft.EntityFrameworkCore;
-using NETCORE.Services;
-using AutoMapper;
 using NETCORE.DatabaseAccess.Repositories;
+using NETCORE.Services;
 
 namespace NETCORE
 {
@@ -31,8 +31,8 @@ namespace NETCORE
             }));
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IStudioRepository, StudioRepository>();
-            services.AddScoped<IMemberService,MemberService>();//https://stackoverflow.com/questions/46930090/unable-to-resolve-service-for-type-while-attempting-to-activate/46930161
-            services.AddScoped<IStudioService,StudioService>();
+            services.AddScoped<IMemberService, MemberService>();//https://stackoverflow.com/questions/46930090/unable-to-resolve-service-for-type-while-attempting-to-activate/46930161
+            services.AddScoped<IStudioService, StudioService>();
             services.AddDbContext<MemberProfileContext>(opt =>
               opt.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();

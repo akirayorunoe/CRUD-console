@@ -2,7 +2,7 @@
 
 namespace NETCORE.Services
 {
-    public interface IStudioService:IStudioRepository
+    public interface IStudioService : IStudioRepository
     {
     }
 }

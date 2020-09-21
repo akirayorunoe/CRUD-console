@@ -3,7 +3,7 @@ using NETCORE.DatabaseAccess.Models;
 
 namespace NETCORE.DatabaseAccess.DBContext
 {
-    public class MemberProfileContext:DbContext
+    public class MemberProfileContext : DbContext
     {
         public MemberProfileContext(DbContextOptions<MemberProfileContext> options)
             : base(options)

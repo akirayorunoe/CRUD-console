@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NETCORE.DatabaseAccess.Repositories
 {
-    public class MemberRepository: IMemberRepository
+    public class MemberRepository : IMemberRepository
     {
         private MemberProfileContext _DBContext;
         public MemberRepository(MemberProfileContext context)
@@ -46,13 +46,13 @@ namespace NETCORE.DatabaseAccess.Repositories
 
         async Task<Member> IMemberRepository.Delete(int id)
         {
-            var member = await _DBContext.Members.FindAsync(id); 
+            var member = await _DBContext.Members.FindAsync(id);
             if (member == null)
             {
                 return member;
             }
             member.IsDelete = true;
-           // _DBContext.Remove(member);
+            // _DBContext.Remove(member);
             await _DBContext.SaveChangesAsync();
             return member;
         }
@@ -62,7 +62,7 @@ namespace NETCORE.DatabaseAccess.Repositories
         //        if (expression != null)
         //            return _DBContext.Members.Where(expression).ToList();
         //        else return await _DBContext.Members.ToListAsync();
-           
+
         //}
 
 
@@ -70,10 +70,10 @@ namespace NETCORE.DatabaseAccess.Repositories
         {
             //if (_cache.CacheGetAll("memberList") == null)
             // {
-                var list= await _DBContext.Members.Where(x=>x.IsDelete==false).ToListAsync();
-                //_cache.CacheSet("memberList", list);
-                  return list;
-          //  }
+            var list = await _DBContext.Members.Where(x => x.IsDelete == false).ToListAsync();
+            //_cache.CacheSet("memberList", list);
+            return list;
+            //  }
             //return _cache.CacheGetAll("memberList");
         }
 
@@ -85,7 +85,7 @@ namespace NETCORE.DatabaseAccess.Repositories
 
         async Task<Member> IMemberRepository.Get(int memberId)
         {
-            return await _DBContext.Members.FirstOrDefaultAsync(mem => mem.MemberId == memberId)??new Member();
+            return await _DBContext.Members.FirstOrDefaultAsync(mem => mem.MemberId == memberId) ?? new Member();
         }
     }
 }

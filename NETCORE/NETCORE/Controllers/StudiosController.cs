@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NETCORE.DatabaseAccess.Models;
 using NETCORE.Services;
-using Microsoft.Extensions.Logging;
-using System.Text.Json;
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace NETCORE.Controllers
@@ -18,7 +18,7 @@ namespace NETCORE.Controllers
         private readonly Microsoft.Extensions.Logging.ILogger _logger;
         public StudiosController(IStudioService service, ILogger<MembersController> logger)
         {
-            studioService=service;
+            studioService = service;
             _logger = logger;
         }
 
@@ -63,7 +63,7 @@ namespace NETCORE.Controllers
 
         // POST api/<StudiosController>
         [HttpPost]
-        public async Task<ActionResult<Studio>>Post(Studio studio)
+        public async Task<ActionResult<Studio>> Post(Studio studio)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace NETCORE.Controllers
 
         // PUT api/<StudiosController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<Studio>>Put(int id, Studio studio)
+        public async Task<ActionResult<Studio>> Put(int id, Studio studio)
         {
             try
             {

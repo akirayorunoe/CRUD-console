@@ -16,7 +16,7 @@ namespace NETCORE.DatabaseAccess.Repositories
         public async Task<Studio> Create(Studio studio)
         {
             _DBcontext.Add(studio);
-           await _DBcontext.SaveChangesAsync();
+            await _DBcontext.SaveChangesAsync();
             return studio;
         }
 

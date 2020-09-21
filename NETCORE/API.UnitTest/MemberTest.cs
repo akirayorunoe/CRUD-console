@@ -11,13 +11,12 @@ using Xunit;
 
 namespace API.UnitTest
 {
-    public class UnitTest1
+    public class MemberTest
     {
         private readonly List<Member> members;
         private readonly IMemberRepository _memberRepoMock;
-        private readonly Member member;
         private readonly MemberService service;
-        public UnitTest1()
+        public MemberTest()
         {
             var config = new MapperConfiguration(cfg =>
             {
@@ -26,7 +25,6 @@ namespace API.UnitTest
             var mapper = config.CreateMapper();
             Mock<IMemberRepository> memberRepoMock = new Mock<IMemberRepository>();
             members = GetTestMembers();
-            member = new Member();
             // Return all the products
             memberRepoMock.Setup(rp => rp.GetAll()).ReturnsAsync(members);
             memberRepoMock.Setup(rp => rp.Get(It.IsAny<int>())).ReturnsAsync((int i) => members.FirstOrDefault(
@@ -44,8 +42,7 @@ namespace API.UnitTest
                 var mem = members.Find(m => m.MemberId == i);
                 members.RemoveAll(x => x.MemberId == i);
                 return mem;
-            }
-                );
+            });
             //update
             memberRepoMock.Setup(rp => rp.Update(It.IsAny<int>(), It.IsAny<Member>())).ReturnsAsync((int i, Member target) =>
                {
@@ -70,7 +67,6 @@ namespace API.UnitTest
         {
             //_memberRepoMock.Setup(rp => rp.GetAll().Result).Returns(GetTestMembers());
             Assert.Equal(2, _memberRepoMock.GetAll().Result.Count);
-
         }
 
         public List<Member> GetTestMembers()
@@ -113,9 +109,9 @@ namespace API.UnitTest
         [InlineData(typeof(MemberDTO), 2)]
         public void GetMemberTest(object expect, int id)
         {
-            var b = service.Get(id);
             Assert.Equal(expect, service.Get(id).GetType());
         }
+
         [Fact]
         public void CreateMemberTest()
         {
@@ -160,6 +156,6 @@ namespace API.UnitTest
             };
             Assert.IsType<MemberDTO>(service.Update(1, member));
         }
-        
+
     }
 }

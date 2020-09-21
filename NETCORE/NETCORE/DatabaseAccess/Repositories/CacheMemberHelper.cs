@@ -26,7 +26,7 @@ namespace NETCORE.DatabaseAccess.Repositories
                 // Keep in cache for this time, reset time if accessed.
                 .SetSlidingExpiration(TimeSpan.FromMinutes(1));
             // Save data in cache.
-            _cache.Set(key, value,cacheEntryOptions);
+            _cache.Set(key, value, cacheEntryOptions);
         }
     }
 

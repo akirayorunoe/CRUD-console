@@ -7,7 +7,6 @@ using NETCORE.Services;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace NETCORE.Controllers
 {
@@ -79,6 +78,9 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
+                List<MemberDTO> members = new List<MemberDTO>();
+                members = memberService.GetAll();
+                cacheMember.CacheSet("listMembers", members);
                 return memberRes;
             }
             catch (Exception e)
@@ -99,6 +101,9 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Request body: {req}", JsonSerializer.Serialize(member));
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
+                List<MemberDTO> members = new List<MemberDTO>();
+                members = memberService.GetAll();
+                cacheMember.CacheSet("listMembers", members);
                 return memberRes;
             }
             catch (Exception e)
@@ -118,7 +123,9 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Getting item details with id {ID}", id);
                 _logger.LogInformation("Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
-
+                List<MemberDTO> members = new List<MemberDTO>();
+                members = memberService.GetAll();
+                cacheMember.CacheSet("listMembers", members);
                 return memberRes;
             }
             catch (Exception e)
