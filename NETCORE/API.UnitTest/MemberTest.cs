@@ -128,7 +128,6 @@ namespace API.UnitTest
                 StudioName = "khabanh"
             };
             Assert.IsType<MemberDTO>(service.Create(member));
-            Assert.Equal(3, service.GetAll().Count);
         }
 
         [Fact]
@@ -136,7 +135,6 @@ namespace API.UnitTest
         {
             //test MemberService
             Assert.IsType<MemberDTO>(service.Delete(2));
-            Assert.Single(service.GetAll());
         }
 
         [Fact]
@@ -156,6 +154,5 @@ namespace API.UnitTest
             };
             Assert.IsType<MemberDTO>(service.Update(1, member));
         }
-
     }
 }
