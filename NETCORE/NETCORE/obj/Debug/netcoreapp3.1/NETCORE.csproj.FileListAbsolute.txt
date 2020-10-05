@@ -164,6 +164,7 @@ C:\Users\intern.phhoang1\source\repos\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Ss
 C:\Users\intern.phhoang1\source\repos\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 C:\Users\intern.phhoang1\source\repos\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CoreCompileInputs.cache
 C:\Users\intern.phhoang1\source\repos\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.config
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -173,11 +174,14 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\net
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\NETCORE.runtimeconfig.dev.json
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\NETCORE.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\NETCORE.pdb
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
@@ -205,6 +209,7 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\net
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Log4Net.AspNetCore.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
@@ -320,6 +325,8 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\net
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.AssemblyInfoInputs.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.AssemblyInfo.cs
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CoreCompileInputs.cache
+C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.RazorTargetAssemblyInfo.cache
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CopyComplete
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\staticwebassets\NETCORE.StaticWebAssets.Manifest.cache
@@ -327,11 +334,4 @@ C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\net
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.pdb
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.genruntimeconfig.cache
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.config
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\log4net.dll
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Log4Net.AspNetCore.dll
 C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csprojAssemblyReference.cache
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\AutoMapper.dll
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.csproj.CoreCompileInputs.cache
-C:\Users\intern.phhoang1\source\repos\CRUD-console\NETCORE\NETCORE\obj\Debug\netcoreapp3.1\NETCORE.MvcApplicationPartsAssemblyInfo.cache

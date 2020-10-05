@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NETCORE.DatabaseAccess.Models;
 using NETCORE.DatabaseAccess.Repositories;
@@ -15,13 +16,15 @@ namespace NETCORE.Controllers
     public class MembersController : ControllerBase
     {
         private readonly IMemberService memberService;
-        private readonly Microsoft.Extensions.Logging.ILogger _logger;
+        private readonly ILogger _logger;
         private CacheMemberHelper cacheMember;
-        public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache)
+        private readonly IConfiguration _config;
+        public MembersController(IMemberService service, ILogger<MembersController> logger, IMemoryCache memoryCache, IConfiguration config)
         {
             memberService = service;
             _logger = logger;
             cacheMember = new CacheMemberHelper(memoryCache);
+            _config = config;
         }
         // GET: api/Members
         [HttpGet]
@@ -30,16 +33,20 @@ namespace NETCORE.Controllers
             try
             {
                 List<MemberDTO> members = new List<MemberDTO>();
-                if (cacheMember.CacheGetAll("listMembers") == null)
+                var cacheConfigValue = _config.GetValue<bool>("IsEnabledCacheMemory");
+                if (cacheConfigValue)
                 {
-                    members = memberService.GetAll();
-                    cacheMember.CacheSet("listMembers", members);
+                    if (cacheMember.CacheGetAll("listMembers") == null)
+                    {
+                        members = memberService.GetAll();
+                        cacheMember.CacheSet("listMembers", members);
+                    }
+                    else { members = cacheMember.CacheGetAll("listMembers"); }
                 }
-                else { members = cacheMember.CacheGetAll("listMembers"); }
+                else { members = memberService.GetAll(); }
                 _logger.LogInformation("GET: {req}", Request.Path);
                 _logger.LogInformation("Start : Response status : {res}", Response.StatusCode);
                 _logger.LogInformation("Start : Response data : {res}", JsonSerializer.Serialize(members));
-
                 return members;
             }
             catch (Exception e)
@@ -48,7 +55,6 @@ namespace NETCORE.Controllers
                 return null;
             }
         }
-
         // GET: api/Members/5
         [HttpGet("{id}")]
         public ActionResult<MemberDTO> GetMember(int id)
@@ -80,7 +86,9 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
                 List<MemberDTO> members = new List<MemberDTO>();
                 members = memberService.GetAll();
-                cacheMember.CacheSet("listMembers", members);
+                var cacheConfigValue = _config.GetValue<bool>("IsEnabledCacheMemory");
+                if (cacheConfigValue)
+                { cacheMember.CacheSet("listMembers", members); }
                 return memberRes;
             }
             catch (Exception e)
@@ -103,7 +111,9 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
                 List<MemberDTO> members = new List<MemberDTO>();
                 members = memberService.GetAll();
-                cacheMember.CacheSet("listMembers", members);
+                var cacheConfigValue = _config.GetValue<bool>("IsEnabledCacheMemory");
+                if (cacheConfigValue)
+                { cacheMember.CacheSet("listMembers", members); }
                 return memberRes;
             }
             catch (Exception e)
@@ -125,7 +135,9 @@ namespace NETCORE.Controllers
                 _logger.LogInformation("Response data : {res}", JsonSerializer.Serialize(memberRes));
                 List<MemberDTO> members = new List<MemberDTO>();
                 members = memberService.GetAll();
-                cacheMember.CacheSet("listMembers", members);
+                var cacheConfigValue = _config.GetValue<bool>("IsEnabledCacheMemory");
+                if (cacheConfigValue)
+                { cacheMember.CacheSet("listMembers", members); }
                 return memberRes;
             }
             catch (Exception e)
