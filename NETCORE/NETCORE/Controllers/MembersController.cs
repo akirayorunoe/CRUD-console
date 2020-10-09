@@ -55,6 +55,13 @@ namespace NETCORE.Controllers
                 return null;
             }
         }
+        [HttpGet]
+        [Route("page")]
+        public ActionResult<IEnumerable<MemberDTO>> GetAll([FromQuery]int pageNumber,[FromQuery]int pageSize)
+        {
+            var pagedData = memberService.GetPagination(pageNumber,pageSize);
+            return pagedData;
+        }
         // GET: api/Members/5
         [HttpGet("{id}")]
         public ActionResult<MemberDTO> GetMember(int id)

@@ -25,7 +25,7 @@ namespace NETCORE.DatabaseAccess.Repositories
             await _DBContext.SaveChangesAsync();
             return member;
         }
-
+        
         async Task<Member> IMemberRepository.Update(int id, Member updateMember)
         {
             var member = await _DBContext.Members.FindAsync(id);
@@ -77,6 +77,14 @@ namespace NETCORE.DatabaseAccess.Repositories
             //return _cache.CacheGetAll("memberList");
         }
 
+        async Task<List<Member>> IMemberRepository.GetPagination(int pageNum,int pageSize)
+        {
+            var pagedData =await _DBContext.Members.Where(x => x.IsDelete == false)
+               .Skip((pageNum - 1) * pageSize)
+               .Take(pageSize)
+               .ToListAsync();
+            return pagedData;
+        }
         async Task<List<Member>> IMemberRepository.ShowListMemberOfStudio(int studioId)
         {
             var listMembers = _DBContext.Members.Where(mem => mem.StudioId == studioId);

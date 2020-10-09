@@ -14,5 +14,6 @@ namespace NETCORE.DatabaseAccess.Repositories
         Task<Member> Update(int id, Member updateMember);
         Task<Member> Delete(int id);
         Task<List<Member>> ShowListMemberOfStudio(int studioId);
+        Task<List<Member>> GetPagination(int pageNum, int pageSize);
     }
 }

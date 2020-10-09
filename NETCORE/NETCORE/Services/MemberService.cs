@@ -20,7 +20,6 @@ namespace NETCORE.Services
         {
             return _mapper.Map<List<MemberDTO>>(members);
         }
-
         public MemberDTO GetMemberDTOs(Member member)
         {
             return _mapper.Map<MemberDTO>(member);
@@ -49,6 +48,12 @@ namespace NETCORE.Services
         {
             var member = memberRepository.Delete(id);
             return GetMemberDTOs(member.Result);
+        }
+
+        public List<MemberDTO> GetPagination(int pageNum, int pageSize)
+        {
+            var members= memberRepository.GetPagination(pageNum, pageSize);
+            return GetListMemberDTOs(members.Result);
         }
     }
 }

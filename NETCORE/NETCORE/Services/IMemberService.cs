@@ -13,5 +13,6 @@ namespace NETCORE.Services
         public MemberDTO Create(Member member);
         public MemberDTO Update(int id, Member member);
         public MemberDTO Delete(int id);
+        public List<MemberDTO> GetPagination(int pageNum, int pageSize);
     }
 }
